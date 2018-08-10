@@ -1,0 +1,33 @@
+{% from 'common/_macros.html' import static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    {% include 'common/_heads.html' %}
+
+    {# md5 #}
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+    <link rel="stylesheet" href="{{ static('front/css/front_signbase.css') }}">
+
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="outer-box">
+        <div class="logo-box">
+            <a href="/">
+                <img src="{{ static('common/images/logo.png') }}">
+            </a>
+        </div>
+        <h2 class="page-title">{% block h2_block %}{% endblock %}</h2>
+        <div class="sign-box">
+            {% block signbox %}{% endblock %}
+        </div>
+        {# 用于记住上一页 #}
+        <span style="display: none" id="return-to-span">{{ return_to }}</span>
+    </div>
+</body>
+</html>
